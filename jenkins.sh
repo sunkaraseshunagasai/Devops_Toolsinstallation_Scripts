@@ -1,4 +1,4 @@
-#NOTE:If you're using ubuntu change package manager 'yum' to 'apt'
+#NOTE:These steps are based on Redhat linux for other flavors steps may vary
 #STEP-1: Installing Git and Maven
 yum install git maven -y
 
