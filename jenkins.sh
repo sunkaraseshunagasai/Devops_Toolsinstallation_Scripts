@@ -1,18 +1,20 @@
 #NOTE:These steps are based on Redhat linux for other flavors steps may vary
-#STEP-1: Installing Git and Maven
-yum install git maven -y
+#!/bin/bash
 
-#STEP-2: Repo Information (jenkins.io --> download -- > redhat)
+# STEP-1: Install required tools
+sudo yum install git maven wget -y
+
+# STEP-2: Add Jenkins repo
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
-#STEP-3: Download Java 17 and Jenkins
-sudo yum install java-17-amazon-corretto -y
-yum install jenkins -y
+# STEP-3: Install Java and Jenkins
+sudo yum install java-17-openjdk -y
+sudo yum install jenkins -y
 
-#STEP-4: Start and check the JENKINS Status
-systemctl start jenkins.service
-systemctl status jenkins.service
+# STEP-4: Start Jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
 
-#STEP-5: Auto-Start Jenkins
-chkconfig jenkins on
+# STEP-5: Enable Jenkins on boot
+sudo systemctl enable jenkins
